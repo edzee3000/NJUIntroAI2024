@@ -1,0 +1,54 @@
+
+import core.ArcadeMachine;
+import core.competition.CompetitionParameters;
+import java.util.Random;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author yuy
+ */
+public class Assignment1 {
+ 
+    public static void main(String[] args)
+    {
+        //Available controllers:
+    	String depthfirstController = "controllers.depthfirst.Agent";
+    	String limitdepthfirstController = "controllers.limitdepthfirst.Agent";
+        String AstarController = "controllers.Astar.Agent";
+        String sampleMCTSController = "controllers.sampleMCTS.Agent";
+
+        boolean visuals = true; // set to false if you don't want to see the game
+        int seed = new Random().nextInt(); // seed for random
+        
+        
+        // /****** Task 1 ******/
+        // CompetitionParameters.ACTION_TIME = 10000; // set to the time that allow you to do the depth first search
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl0.txt", true, depthfirstController, null, seed, false);
+        
+        
+        /****** Task 2 ******/
+        // CompetitionParameters.ACTION_TIME = 100; // no time for finding the whole path
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl0.txt", true, limitdepthfirstController, null, seed, false);
+        
+        
+        /****** Task 3 ******/
+        CompetitionParameters.ACTION_TIME = 1000000; // no time for finding the whole path
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl0.txt", true, AstarController, null, seed, false);
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl1.txt", true, AstarController, null, seed, false);//这里会出问题，时间太短了100根本不够，执行时间好像是842ms，然后调整为1000s之后就可以了
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl2.txt", true, AstarController, null, seed, false);
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl3.txt", true, AstarController, null, seed, false);
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl4.txt", true, AstarController, null, seed, false);
+        
+        
+        // /****** Task 4 ******/
+        CompetitionParameters.ACTION_TIME = 100; // no time for finding the whole path
+        ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl0.txt", true, sampleMCTSController, null, seed, false);
+        // ArcadeMachine.runOneGame("examples/gridphysics/bait.txt", "examples/gridphysics/bait_lvl3.txt", true, sampleMCTSController, null, seed, false);
+    }   
+}
